@@ -1,0 +1,134 @@
+* {
+  transition: .33s ease all;
+  box-sizing: border-box;
+}
+
+span {
+  display: inline-block;
+  width: 200px;
+  height: 5px;
+  background-color: #2D58C4;
+  margin: 30px;
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 30px;
+  margin: 0 0 15px;
+  color: #000066;
+  font-family: 'Poppins',sans-serif;
+}
+
+p {
+  font-weight: 400;
+  font-family: 'Poppins',sans-serif;
+  line-height: 24px;
+  margin: 0 0 15px 0;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #2D58C4;
+  font-weight: bold;
+  font-family: 'Poppins',sans-serif;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  padding: 5px;
+  left: -5px;
+}
+
+a:hover {
+  color: #2D58C4;
+}
+
+a::before {
+  content: '';
+  z-index: -1;
+ position: absolute;
+ top: calc(50%);
+ left: 0;
+ width: 100%;
+ height: 40%;
+ pointer-events: none;
+ background: #B7CCFF;
+ transform: scale3d(0,1,1);
+ transform-origin: 0% 50%;
+ transition: transform 0.33s;
+}
+
+a:hover::before {
+  transform: scale3d(1,1,1);
+ transform-origin: 0% 50%;
+}
+
+div.news-card {
+  background-color: #edf4f6;
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: #edf4f6;
+  border-bottom-right-radius: 100%;
+  border-top-left-radius: 55%;
+  border-bottom-left-radius: 1%;
+}
+
+
+div .container {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+  box-shadow: 0 8px 16px rgba(black, .45);
+  padding-bottom: 20px;
+}
+
+div .img {
+  height: 300px;
+  width: 500px;
+  background-position: center;
+  background-size: cover;
+}
+
+div.text-container {
+  margin: 60px 45px 55px;
+}
+
+
+@media screen and (min-width: 768px) {
+ div.container {
+   flex-direction: row;
+    width: 100%;
+ }
+
+  div.img {
+     height: 420px;
+     min-width: 360px;
+  }
+
+  div.text-container {
+     margin: 0 60px;
+     max-width: 660;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  div.container {
+     max-width: 1200px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}
+
+

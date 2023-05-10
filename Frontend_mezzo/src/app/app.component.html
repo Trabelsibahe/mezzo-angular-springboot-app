@@ -1,0 +1,63 @@
+<div *ngIf="showMenu" class="grad-bar"></div>
+<div id="app">
+  <header class="header sticky-top">
+  <nav *ngIf="showMenu" class="navbar navbar-expand-md py-2 navbar-light">
+    <div class="collapse navbar-collapse">
+
+      <a href="/home" class="navbar-brand">
+        <!-- Logo Image -->
+        <div class="logo">
+          <img src="assets/images/logo1.png" width="55%" alt="Card Back">
+          <img src="assets/images/logo2.png" width="55%" class="img-top" alt="Card Front">
+          <span class="hr">Hr</span>
+        </div>
+      </a>
+    </div>
+    <div>
+      <button class="btn buttonews">
+        <a href="/news">Consultez la newsletter</a>
+      </button>
+    </div>
+        <!-- contact-->
+        <button class="btn button ml-auto" routerLink="Contact">
+          Contact
+        </button>
+  </nav>
+  <nav  *ngIf="showMenu" class="navbar navbar-expand-lg navbar-light bg-white py-1 border-bottom">
+
+    <!-- role pages-->
+    <ul class="navbar-nav ml-left" routerLinkActive="active">
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Panneau D'administration</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/rrh" class="nav-link" routerLink="rrh">Panneau d'RRH</a>
+      </li>
+      <li class="nav-item" *ngIf="showUserBoard">
+        <a href="/monespace" class="nav-link" routerLink="monespace">Mon Espace</a>
+      </li>
+    </ul>
+
+    <!-- login-->
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">S'inscrire</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Connexion</a>
+      </li>
+    </ul>
+
+        <!-- profile-->
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">Mon profil</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">Se déconnecter</a>
+      </li>
+    </ul>
+</nav>
+</header>
+<app-spinner></app-spinner>
+<router-outlet></router-outlet>

@@ -1,0 +1,49 @@
+
+<html>
+  <body>
+    <form (ngSubmit)="modifierUser()" class="container" *ngIf="isLoggedIn">
+      <div class="profile">
+        <img src="../../assets/images/avatar.jpg">
+        <div class="name">
+          <h6 class="f-w-600 ">{{currentUser.firstName}} {{currentUser.lastName}}</h6>
+          <p *ngFor="let role of currentUser.roles" class="role">{{role == "ROLE_MODERATOR" ? 'Résponsable Ressources Humaine' : (role == "ROLE_ADMIN" ? 'Administrateur' : (role == "ROLE_USER" ? 'Employée' : ''))}}</p>
+        </div>
+      </div>
+      <div class="content">
+        <div class="title"><h6>Modifier votre profile ici :</h6></div>
+        <div class="line"></div>
+        <div class="info">
+          <div class="row">
+            <div class="col-sm">
+              <h6>Nom: </h6><input type="text" name="lastName" [(ngModel)]="user.lastName"></div>
+            <div class="col-sm">
+              <h6>Prénom: </h6><input type="text" name="firstName" [(ngModel)]="user.firstName"></div>
+            <div class="col-sm">
+              <h6>Numéro de télèphone: </h6><input type="text" name="number" [(ngModel)]="user.number"></div>
+          </div>
+          <div class="line"></div>
+        </div>
+        <div class="info2">
+          <div class="row">
+            <div class="col-sm">
+              <h6>Email:</h6><input type="text" name="email" class="email"  [(ngModel)]="user.email" disabled></div>
+            <div class="col-sm">
+              <h6>Date de naissance: </h6><input type="date" name="date" [(ngModel)]="user.date"></div>
+              <div class="col-sm">
+                <h6>Mot de passe: </h6><input type="password" value="" name="password" [(ngModel)]="user.password">
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="design">
+        <button (click)="modifierUser()" class="btn accepter">Enregistrer</button>
+        <button (click)="annuler()"class="btn refuser">Annuler</button>
+      </div>
+    </form>
+
+
+  </body>
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
+  </html>

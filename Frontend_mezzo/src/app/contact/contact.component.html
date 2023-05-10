@@ -1,0 +1,95 @@
+<html>
+
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <section class="contact">
+        <div class="content">
+            <h2>Contactez nous</h2>
+
+        </div>
+        <div class="container">
+            <div class="contactInfo">
+                <div class="box">
+                    <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                     </div>
+                    <div class="text">
+                        <h3>Adresse</h3>
+                        <p> 12 rue de l’Electricité, ZI La Charguia I – 2035 Tunis – TUNISIE</p>
+                    </div>
+                </div>
+                    <div class="box">
+                            <div class="icon">
+                                 <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                                <div class="text">
+                                    <h3>Télèphone</h3>
+                                    <p>59 305 300</p>
+                                 </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon"> <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">
+                            <h3>Email</h3>
+                            <p>tunis@somezzo.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="contactForm">
+                <form  (ngSubmit)="f.form.valid && onSubmit()"#f="ngForm">
+                    <h2>Envoyer un Message</h2>
+                    <div class="inputBox" >
+                        <input type="text" name="nom"  [(ngModel)]="form.nom" required nom  #nom="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && nom.errors }">
+                        <span>Nom et Prénom</span>
+                        <div class="invalid-feedback" *ngIf="nom.errors && f.submitted">
+                            <div *ngIf="nom.errors['required']">nom est obligatoire</div>
+                            <div *ngIf="nom.errors['nom']">
+                                nom n'est pas valid.
+                            </div>
+                          </div>
+
+
+                    </div>
+                    <div class="inputBox">
+                        <input type="email" name="email" [(ngModel)]="form.email" required email
+                        #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }">
+                        <span>Email</span>
+                        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                            <div *ngIf="email.errors['required']">Email est obligatoire.</div>
+                            <div *ngIf="email.errors['email']">
+                              Email  n'est pas valide.
+                            </div>
+                          </div>
+
+                    </div>
+                    <div class="inputBox">
+                        <textarea required name="message" [(ngModel)]="form.message" required message
+                        #message="ngModel" [ngClass]="{ 'is-invalid': f.submitted && message.errors }"></textarea>
+                        <span>tapez votre message ...</span>
+                        <div class="invalid-feedback" *ngIf="message.errors && f.submitted">
+                            <div *ngIf="message.errors['required']">message est obligatoire.</div>
+                            <div *ngIf="message.errors['message']">
+                                message  n'est pas valide.
+                            </div>
+                          </div>
+
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Envoyer" name="btn" >
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

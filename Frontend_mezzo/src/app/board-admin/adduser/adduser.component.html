@@ -1,0 +1,131 @@
+<html>
+  <body>
+<div class="container" *ngIf="showAdduserPage">
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()"#f="ngForm" novalidate>
+      <div class="title">Créer un compte.</div>
+
+      <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input  type="text" class="form-control"  name="lastName"
+          [(ngModel)]="form.lastName" required lastName  #lastName="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && lastName.errors }"/>
+        <div class="invalid-feedback" *ngIf="lastName.errors && f.submitted">
+          <div *ngIf="lastName.errors['required']">Nom is required</div>
+          <div *ngIf="lastName.errors['firstName']">
+            Nom n'est pas valid.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="firstName">Prénom</label>
+        <input  type="text"  class="form-control"
+          name="firstName" [(ngModel)]="form.firstName" required firstName #firstName="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && firstName.errors }"/>
+        <div class="invalid-feedback" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors['required']">Prénom is required</div>
+          <div *ngIf="firstName.errors['lastName']">
+            Prénom n'est pas valid.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control"   name="email"  [(ngModel)]="form.email" required email
+          #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }"/>
+        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Email est obligatoire.</div>
+          <div *ngIf="email.errors['email']">
+            Email  n'est pas valide.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="number">Numéro de téléphone</label>
+        <input type="number" class="form-control"   name="number"  [(ngModel)]="form.number" required number
+          #number="ngModel" [ngClass]="{ 'is-invalid': f.submitted && number.errors }"/>
+        <div class="invalid-feedback" *ngIf="number.errors && f.submitted">
+          <div *ngIf="number.errors['required']">Le Numéro de téléphone est obligatoire.</div>
+          <div *ngIf="number.errors['number']">
+            Le numéro de téléphone n'est pas valide.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="date">Date de naissance</label>
+        <input type="date" class="form-control"   name="date"  [(ngModel)]="form.date" required date
+          #date="ngModel" [ngClass]="{ 'is-invalid': f.submitted && date.errors }"/>
+        <div class="invalid-feedback" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors['required']">Le date de naissance est obligatoire.</div>
+          <div *ngIf="date.errors['date']">
+            date  n'est pas valide.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input  type="password"  class="form-control"  name="password" [(ngModel)]="form.password"  required  minlength="6"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors['required']">Le mot de passe est obligatoire.</div>
+          <div *ngIf="password.errors['minlength']">
+            Le mot de passe doit etre minimum 6 lettres.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cpassword">Confirmer le mot de passe</label>
+        <input  type="password"  class="form-control" name="cpassword" [(ngModel)]="form.cpassword" pattern="{{form.password}}"  required minlength="6"
+          #cpassword="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && cpassword.errors}" />
+        <div class="invalid-feedback" *ngIf="f.submitted && cpassword?.errors">
+            <div>Veuillez confirmer votre mot de passe</div>
+        </div>
+        </div>
+
+        <div class="form-check">
+          <div class="gender-details">
+            <input class="form-check-input" type="radio" id="dot-1" name="role"  value="e" checked>
+            <span class="gender-title">Role</span>
+            <div class="category">
+              <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Employée</span>
+              </label>
+              <input class="form-check-input" type="radio" id="dot-2" name="role"  value="r" [(ngModel)]="form.role">
+              <div class="category">
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Résponsable RH</span>
+              </label>
+              </div>
+            </div>
+            <input class="form-check-input" type="radio" id="dot-3" name="role"  value="a" [(ngModel)]="form.role">
+            <div class="category">
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">Admin</span>
+              </label>
+              </div>
+            </div>
+            </div>
+
+
+
+      <div class="input-box button">
+        <button class="button">S'inscrire</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Erreur dans l'inscription!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-light" *ngIf="isSuccessful">
+      Inscription réussite.
+    </div>
+  </div></body>
+</html>

@@ -1,0 +1,52 @@
+
+<html>
+  <body>
+    <form (ngSubmit)="modifierUser()" class="container" *ngIf="isLoggedIn">
+      <div class="profile">
+        <img src="../../assets/images/avatar.jpg">
+        <div class="name">
+          <p>Nom et Rôle :</p>
+          <h6 class="f-w-600 ">{{user.firstName}} {{user.lastName}}</h6>
+          <p *ngFor="let item of user.roles" style="color:gray">
+            {{item.name == "ROLE_MODERATOR" ? 'Responsable ressources humaines' : (item.name == "ROLE_ADMIN" ? 'Administrateur' : (item.name == "ROLE_USER" ? 'Employée' : ''))}}
+          </p>
+        </div>
+      </div>
+      <div class="content">
+        <div class="title"><h6>Modification de profile  :</h6></div>
+        <div class="line"></div>
+        <div class="info">
+          <div class="row">
+            <div class="col-sm">
+              <h6>Nom: </h6><input type="text" name="lastName" [(ngModel)]="user.lastName"></div>
+            <div class="col-sm">
+              <h6>Prénom: </h6><input type="text" name="firstName" [(ngModel)]="user.firstName"></div>
+            <div class="col-sm">
+              <h6>Numéro de télèphone: </h6><input type="text" name="number" [(ngModel)]="user.number"></div>
+          </div>
+          <div class="line"></div>
+        </div>
+        <div class="info2">
+          <div class="row">
+            <div class="col-sm">
+              <h6>Email:</h6><input type="text" name="email" class="email"  [(ngModel)]="user.email"></div>
+            <div class="col-sm">
+              <h6>Date de naissance: </h6><input type="date" name="date" [(ngModel)]="user.date"></div>
+              <div class="btn-group">
+                <label for="role"><h6>Role:</h6></label>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline-secondary"> <input type="radio" class="btn-check" name="options" autocomplete="off" [ngModel]="user.roles" (ngModelChange)="user.roles = role_emp">Employéé</label>
+                <label class="btn btn-outline-secondary"><input type="radio" class="btn-check" name="options" autocomplete="off" [ngModel]="user.roles"  (ngModelChange)="user.roles = role_rrh">RRH</label>
+              </div></div></div>
+          </div>
+        </div>
+      <div class="design">
+        <button (click)="modifierUser()" class="btn accepter">Enregistrer</button>
+        <button (click)="retour()"class="btn refuser">Annuler</button>
+      </div>
+    </form>
+  </body>
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
+  </html>

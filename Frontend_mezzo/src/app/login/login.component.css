@@ -1,0 +1,160 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+ body{
+  background: linear-gradient(to right, rgba(40,54,84,1) 0%, rgba(77,99,140,1) 100%);
+  height: 105%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+}
+
+.retour {
+  color:#edf4f6;
+  top: 5px;
+  text-align: left;
+}
+.retour:hover {
+  text-decoration: underline;
+  color: #edf4f6;
+}
+
+.container{
+padding-left: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ min-height: 100vh;
+
+}
+.login{
+  width: 800px;
+  min-height: 400px;
+overflow: hidden;
+border-radius: 5px;
+background: white;
+display: flex;
+box-shadow: 15px 5px 30px rgba(0,0,0,0.3);
+
+}
+.content{
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  transition: 0.5s;
+}
+.content img{
+  width: 110%;
+}
+
+
+.loginform{
+  flex-basis: 50%;
+  background-attachment: white;
+padding: 25px;
+}
+.container .loginform .title{
+  font-size:40px;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+  position: relative;
+}
+.container .loginform .title:before{
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 33px;
+  left: 0px;
+  bottom: 3px;
+  border-radius: 10px;
+  background: linear-gradient(to right, rgba(0,0,102,1) 0%, rgba(18,84,136,1) 90%);
+}
+.tbox{
+  border-radius: 3px;
+  background: transparent;
+  outline: none;
+  border: 1px solid rgba(77,99,140,1);
+  width: 100%;
+  height: 35px;
+margin: 30px 0;
+}
+.tbox input{
+  background: transparent;
+  width: 90%;
+  outline: none;
+  border:0;
+padding-left: 5px;
+}
+::placeholder{
+  color: #777;
+}
+.tbox i{
+  color:   rgba(77,99,140,1);
+  font-size: 15px;
+  padding: 7px;
+}
+.btn{
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(to right, #99004d 0%, rgba(40,54,84,1) 0%, rgba(77,99,140,1) 100%);
+  font-size: 18px;
+  padding: 12px;
+  color: white;
+  transition: 0.5s;
+
+}
+.btn:hover{
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(to right, #99004d 0%, rgba(40,54,84,1) 0%, rgba(77,99,140,1) 100%);
+  font-size: 18px;
+  padding: 12px;
+  color: white;
+  letter-spacing: 3px;
+  transition: 0.5s;
+
+}
+
+
+.social{
+  margin-top: 25px;
+  list-style: none;
+  text-align: center;
+}
+.social li{
+display: inline-block;
+}
+.social li i{
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  border: 1px solid rgba(77,99,140,1);
+  border-radius: 50%;
+  font-size: 18px;
+  color: black;
+  }
+  .pip {
+    color: #000066;
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    font-size: 13px;
+  }
+  /* code responsive te3 login */
+  @media(max-width:768px){
+
+    .login{
+      flex-direction: column;
+      margin: 0 15px;
+
+    }
+  }
+
+

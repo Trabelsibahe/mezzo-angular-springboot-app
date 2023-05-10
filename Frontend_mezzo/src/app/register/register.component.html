@@ -1,0 +1,111 @@
+<html>
+  <body>
+    <a href="/home"><p class="retour">Retour a la page d'acceuil.</p></a>
+<div class="container" *ngIf="!isLoggedIn">
+
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()"#f="ngForm" novalidate>
+      <div class="title">Inscription</div>
+      <div class="input-box underline">
+        <input  type="text"   name="lastName" placeholder="Nom"
+          [(ngModel)]="form.lastName" required lastName  #lastName="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && lastName.errors }"/>
+          <div class="underline"></div>
+        <div class="invalid-feedback" *ngIf="lastName.errors && f.submitted">
+          <div *ngIf="lastName.errors['required']">Nom est obligatoire</div>
+          <div *ngIf="lastName.errors['firstName']">
+            Nom n'est pas valid.
+          </div>
+        </div>
+      </div>
+      <div class="input-box underline">
+
+        <input  type="text"   placeholder="Prénom"
+          name="firstName" [(ngModel)]="form.firstName" required firstName #firstName="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && firstName.errors }"/>
+          <div class="underline"></div>
+        <div class="invalid-feedback" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors['required']">Prénom est obligatoire</div>
+          <div *ngIf="firstName.errors['lastName']">
+            Prénom n'est pas valid.
+          </div>
+        </div>
+      </div>
+      <div class="input-box underline">
+
+        <input type="email"    name="email"  placeholder="Email" [(ngModel)]="form.email" required email
+          #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }"/>
+          <div class="underline"></div>
+        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Email est obligatoire.</div>
+          <div *ngIf="email.errors['email']">
+            Email  n'est pas valide.
+          </div>
+        </div>
+      </div>
+
+      <div class="input-box underline">
+
+        <input type="number"  placeholder="Numéro de téléphone" name="number"  [(ngModel)]="form.number" required number
+          #number="ngModel" [ngClass]="{ 'is-invalid': f.submitted && number.errors }"/>
+          <div class="underline"></div>
+        <div class="invalid-feedback" *ngIf="number.errors && f.submitted">
+          <div *ngIf="number.errors['required']">Le Numéro de téléphone est obligatoire.</div>
+          <div *ngIf="number.errors['number']">
+            Le numéro de téléphone n'est pas valide.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="input-box underline">
+
+        <input  type="password"   placeholder="Mot de passe" name="password" [(ngModel)]="form.password"  required  minlength="6"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+          <div class="underline"></div>
+        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors['required']">Le mot de passe est obligatoire.</div>
+          <div *ngIf="password.errors['minlength']">
+            Le mot de passe doit etre minimum 6 lettres.
+          </div>
+        </div>
+      </div>
+
+      <div class="input-box underline">
+
+        <input  type="password" placeholder="Confirmer le mot de passe"  name="cpassword" [(ngModel)]="form.cpassword" pattern="{{form.password}}"  required minlength="6"
+          #cpassword="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && cpassword.errors}" />
+          <div class="underline"></div>
+        <div class="invalid-feedback" *ngIf="f.submitted && cpassword?.errors">
+            <div>Confirmez votre mot de passe.</div>
+        </div>
+        </div>
+        <div class="input-box underline">
+
+          <input type="date"    name="date" placeholder="Date de naissance" [(ngModel)]="form.date" required date
+            #date="ngModel" [ngClass]="{ 'is-invalid': f.submitted && date.errors }"/>
+            <div class="underline"></div>
+          <div class="invalid-feedback" *ngIf="date.errors && f.submitted">
+            <div *ngIf="date.errors['required']">La date de naissance est obligatoire.</div>
+            <div *ngIf="date.errors['date']">
+              date  n'est pas valide.
+            </div>
+          </div>
+        </div>
+
+      <div class="input-box button">
+        <button >S'inscrire</button>
+      </div>
+      <div class="alert alert" *ngIf="f.submitted && isSignUpFailed">
+        Erreur dans l'inscription!<br />
+      </div>
+    </form>
+  </div>
+  <br><div class="option">Vous avez déjà un compte?<a class="option" routerLink="/login"> Connectez-vous!</a></div>
+  <br><br>
+
+
+</body>
+
+</html>

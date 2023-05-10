@@ -1,0 +1,46 @@
+
+<html *ngIf="showRRHPage">
+  <body>
+    <br><br><br> <br>
+
+  <div  >
+    <div class="row">
+
+  <div class="container" >
+    <br>
+  <h2 >Liste des employés</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#ID</th>
+      <th>Prenom</th>
+      <th>Nom</th>
+
+      <th>Email</th>
+      <th>Date de naissance</th>
+      <th>Numéro de téléphone</th>
+
+
+    </tr>
+  </thead>
+  <ng-container *ngFor="let user of users">
+    <tbody *ngFor="let item of user.roles">
+      <tr *ngIf="item.name == 'ROLE_USER'">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.date}}</td>
+        <td>{{user.number}}</td>
+
+
+      </tr>
+    </tbody>
+</ng-container>
+  </table>
+  </div>
+  </div>
+  </div>
+  </body>
+  </html>
+

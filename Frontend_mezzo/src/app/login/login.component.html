@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+
+  <body>
+    <a href="/home"><p class="retour">Retour a la page d'acceuil.</p></a>
+     <div class="container">
+      <div class="login">
+        <div class="content">
+          <img src="assets/images/mezzo.jpg"  alt="">
+        </div>
+<div class="loginform">
+  <p class="title">Connexion</p>
+  <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"novalidate>
+    <div class="tbox">
+      <i class="fa fa-user"></i><input type="text" name="Email" [(ngModel)]="form.email" required #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }" placeholder="Email">
+      <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+        Veuillez saisir une adresse e-mail valide.
+      </div>
+    </div>
+    <div class="tbox">
+      <i class="fa fa-lock"></i><input type="password" name="password" [(ngModel)]="form.password" required  minlength="6" #password="ngModel"  [ngClass]="{ 'is-invalid': f.submitted && password.errors }" placeholder="Password">
+      <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+        <div *ngIf="password.errors['required']">Mot de passe requis.</div>
+        <div *ngIf="password.errors['minlength']">
+          Le mot de passe doit être au moins de 6 caractères.
+         </div>
+      </div>
+    </div>
+    <button class="btn"  >Connexion</button>
+    <div class="form-group">
+      <div *ngIf="f.submitted && isLoginFailed" class="alert echec" role="alert">
+        Échec de la connexion.</div>
+    </div>
+    <p class="pip">vous n'avez pas de compte? <a href="/register">inscrit vous</a></p>
+<ul class="social">
+  <li><a href="https://www.facebook.com/somezzo.tn"><i class="fa fa-facebook"></i></a></li>
+  <li><a href="https://twitter.com/MezzoRC" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  <li><a href="https://www.instagram.com/mezzo.tunis/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+  <li><a href="https://www.linkedin.com/company/mezzo_2/?trk=nav_account_sub_nav_company_admin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+</ul>
+  </form>
+
+  <div class="alert alert-light" *ngIf="isLoggedIn" >
+    <h2>Bienvenue {{ nom }}</h2>
+    <br>
+    <div>Vous êtes connecté en tant que</div>
+    <div *ngFor="let role of roles">{{role == "ROLE_MODERATOR" ? 'Responsable Ressources Humaine' : (role == "ROLE_ADMIN" ? 'Administrateur' : (role == "ROLE_USER" ? 'Employée' : ''))}}.</div>
+    <br>
+    Accéder à votre profil à apartir <a routerLink="/profile">d'ici.</a>
+  </div>
+ </div>
+
+        </div>
+      </div>
+
+  </body>
+</html>

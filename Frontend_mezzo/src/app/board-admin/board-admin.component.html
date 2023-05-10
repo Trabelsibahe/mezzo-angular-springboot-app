@@ -1,0 +1,63 @@
+
+<html>
+<body>
+<div class="container1" *ngIf="showAdminPage">
+  <div class="row">
+    <div class="col-lg-6">
+
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-3">
+  <div class="card-body">
+      <ul class="text-center list-inline py-3">
+          <li class="list-inline-item">
+              <a routerLink="/admin/adduser" class="btn btn-outline-light">Créer un compte</a>
+          </li>
+      </ul>
+  </div>
+</div>
+ </div>
+<div class="container">
+  <br>
+<h2 >Gestion des utilisateurs</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#ID</th>
+    <th>Prenom</th>
+    <th>Nom</th>
+
+    <th>Email</th>
+    <th>Date</th>
+    <th>Numéro de téléphone</th>
+    <th>Role</th>
+
+    <th>Action</th>
+
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.date}}</td>
+    <td>{{user.number}}</td>
+
+    <td *ngFor="let item of user.roles">
+      {{item.name == "ROLE_MODERATOR" ? 'Responsable ressources humaines' : (item.name == "ROLE_ADMIN" ? 'Administrateur' : (item.name == "ROLE_USER" ? 'Employée' : ''))}}
+    </td>
+     <td> <button (click)="removeUser(user.id)" class="btn btn-dark">Supprimer</button>
+      <button (click)="updateUser(user.id)" class="btn btn-outline-dark">Modifier</button>
+    </td>
+
+    </tbody>
+</table>
+<br>
+</div>
+</div>
+</body>
+</html>

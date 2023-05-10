@@ -1,0 +1,73 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+
+html {
+  height: 100%;
+}
+body {
+  background: linear-gradient(to right, rgba(40,54,84,1) 0%, rgba(77,99,140,1) 100%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+}
+
+.container {
+  background-color: #ffffff;
+  height:75%;
+  position: relative;
+  top: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.design100 {
+  background-color: #edf4f6;
+  height: 50%;
+  width: 50%;
+  left: 570px;
+  position:relative;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 60%;
+  border-bottom-left-radius: 20%;
+  border-top-right-radius: 20%;
+
+}
+
+.retour {
+    color:#000066
+}
+
+.zero {
+    color:#125488;
+}
+.profile {
+  /*background-image: url("../../assets/images/background.jpg");
+  background-size:250%;*/
+  background-color: #edf4f6;
+  position: relative;
+  height: 100%;
+  width: 30%;
+  right: 16px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 70%;
+}
+.name {
+  position: relative;
+  top: 34px;
+  text-align: center;
+}
+.role { color: gray;
+
+}
+.content {
+    position: relative;
+    margin-top: -460px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 70px;
+}
